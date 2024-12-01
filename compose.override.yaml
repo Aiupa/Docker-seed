@@ -1,0 +1,17 @@
+# Development environment override
+services:
+  php:
+    build:
+      context: .
+      target: php_dev
+    volumes:
+      - ./:/app
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    tty: true
+
+###> doctrine/doctrine-bundle ###
+  database:
+    ports:
+      - "5432"
+###< doctrine/doctrine-bundle ###
